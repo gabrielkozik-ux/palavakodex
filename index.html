@@ -26,19 +26,14 @@
             background-image: url('country.jpg');
         }
 
-        /* --- STYLY PRO PŘEHRÁVAČ --- */
-        #hudebniIkona {
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out, opacity 0.2s;
-            margin: 2rem auto; /* Vycentrování */
+        /* --- STYL PRO KLIKACÍ EMOJI --- */
+        #prehravac-emoji {
+            cursor: pointer; /* Změní kurzor na ručičku, aby bylo jasné, že je to klikací */
+            transition: transform 0.2s ease-in-out; /* Přidá plynulou animaci */
+            display: inline-block; /* Zajistí správné fungování animace */
         }
-        #hudebniIkona:hover {
-            opacity: 0.7;
-        }
-        #hudebniIkona:active {
-            transform: scale(0.9);
+        #prehravac-emoji:active {
+            transform: scale(0.9); /* Při kliknutí se emoji zmenší */
         }
     </style>
 </head>
@@ -60,21 +55,10 @@
             <img src="kopec.png" alt="Grafický prvek Pálava" class="w-full max-w-lg mx-auto">
         </div>
 
-        <div class="text-center mb-16">
-            <h2 class="text-2xl font-bold text-midnight-green mb-2">Poslechněte si naši znělku</h2>
-            
-            <div id="prehravac">
-                <svg id="hudebniIkona" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.25 8.25L17.25 3.75C17.25 3.41848 17.1183 3.10054 16.8839 2.86612C16.6495 2.6317 16.3315 2.5 16 2.5C15.6685 2.5 15.3505 2.6317 15.1161 2.86612C14.8817 3.10054 14.75 3.41848 14.75 3.75V11.39C14.1818 11.1274 13.5614 10.9899 12.93 11C11.536 11.01 10.251 11.7 9.48 12.87C8.71 14.04 8.56 15.54 9.11 16.86C9.66 18.18 10.83 19.16 12.2 19.45C13.57 19.74 15.01 19.3 16.07 18.28C16.6394 17.7211 16.9992 16.9654 17.102 16.148C17.2048 15.3307 17.0456 14.5054 16.64 13.78L17.25 13.75V8.25Z" stroke="#003749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            
-            <audio id="mojePisen" src="Klub Pod Pálavou.mp3" preload="auto"></audio>
-        </div>
         <div class="space-y-16">
 
             <section id="pillar1" class="md:flex items-center gap-10">
-                <div class="text-6xl md:text-8xl text-center md:text-left mb-6 md:mb-0">🎼</div>
+                <div id="prehravac-emoji" class="text-6xl md:text-8xl text-center md:text-left mb-6 md:mb-0">🎼</div>
                 <div class="flex-1">
                     <h2 class="text-2xl md:text-3xl font-bold text-burnt-orange mb-3">Nástroj první: Vzájemné ladění – Důvěra a respekt</h2>
                     <p class="text-base md:text-lg text-justify">
@@ -135,11 +119,13 @@
         </div>
     </footer>
 
+    <audio id="mojePisen" src="Klub Pod Pálavou.mp3" preload="auto"></audio>
+
     <script>
         const pisen = document.getElementById('mojePisen');
-        const ikonaPrehravace = document.getElementById('prehravac');
+        const emojiPrehravac = document.getElementById('prehravac-emoji');
         
-        ikonaPrehravace.addEventListener('click', function() {
+        emojiPrehravac.addEventListener('click', function() {
             if (pisen.paused) {
                 pisen.play();
             } else {
