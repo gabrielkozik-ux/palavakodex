@@ -25,11 +25,25 @@
         .hero-section {
             background-image: url('country.jpg');
         }
+
+        /* --- STYLY PRO PŘEHRÁVAČ --- */
+        #hudebniIkona {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, opacity 0.2s;
+            margin: 2rem auto; /* Vycentrování */
+        }
+        #hudebniIkona:hover {
+            opacity: 0.7;
+        }
+        #hudebniIkona:active {
+            transform: scale(0.9);
+        }
     </style>
 </head>
 <body class="bg-alabaster text-midnight-green">
 
-    <!-- Uvodni sekce s obrazkem na pozadi -->
     <section class="hero-section relative bg-cover bg-center text-white shadow-lg">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
         <div class="relative z-10 container mx-auto max-w-4xl py-20 px-6 text-center flex flex-col items-center">
@@ -42,15 +56,23 @@
 
     <main class="container mx-auto max-w-4xl py-12 px-6">
         
-        <!-- Graficky prvek -->
         <div class="text-center mt-8 mb-12">
             <img src="kopec.png" alt="Grafický prvek Pálava" class="w-full max-w-lg mx-auto">
         </div>
 
-        <!-- Sekce s nastroji -->
+        <div class="text-center mb-16">
+            <h2 class="text-2xl font-bold text-midnight-green mb-2">Poslechněte si naši znělku</h2>
+            
+            <div id="prehravac">
+                <svg id="hudebniIkona" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.25 8.25L17.25 3.75C17.25 3.41848 17.1183 3.10054 16.8839 2.86612C16.6495 2.6317 16.3315 2.5 16 2.5C15.6685 2.5 15.3505 2.6317 15.1161 2.86612C14.8817 3.10054 14.75 3.41848 14.75 3.75V11.39C14.1818 11.1274 13.5614 10.9899 12.93 11C11.536 11.01 10.251 11.7 9.48 12.87C8.71 14.04 8.56 15.54 9.11 16.86C9.66 18.18 10.83 19.16 12.2 19.45C13.57 19.74 15.01 19.3 16.07 18.28C16.6394 17.7211 16.9992 16.9654 17.102 16.148C17.2048 15.3307 17.0456 14.5054 16.64 13.78L17.25 13.75V8.25Z" stroke="#003749" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            
+            <audio id="mojePisen" src="Klub Pod Pálavou.mp3" preload="auto"></audio>
+        </div>
         <div class="space-y-16">
 
-            <!-- Nastroj 1: Vzajemne ladeni -->
             <section id="pillar1" class="md:flex items-center gap-10">
                 <div class="text-6xl md:text-8xl text-center md:text-left mb-6 md:mb-0">🎼</div>
                 <div class="flex-1">
@@ -61,7 +83,6 @@
                 </div>
             </section>
 
-            <!-- Nastroj 2: Umeni naslouchat -->
             <section id="pillar2" class="md:flex items-center gap-10 flex-row-reverse">
                  <div class="text-6xl md:text-8xl text-center md:text-left mb-6 md:mb-0">🎻</div>
                 <div class="flex-1">
@@ -72,7 +93,6 @@
                 </div>
             </section>
 
-            <!-- Nastroj 3: Profesionalni vykon -->
             <section id="pillar3" class="md:flex items-center gap-10">
                  <div class="text-6xl md:text-8xl text-center md:text-left mb-6 md:mb-0">🏆</div>
                 <div class="flex-1">
@@ -83,7 +103,6 @@
                 </div>
             </section>
 
-            <!-- Reseni neshod -->
             <section id="pillar4" class="md:flex items-center gap-10 flex-row-reverse">
                  <div class="text-6xl md:text-8xl text-center md:text-left mb-6 md:mb-0">🤵</div>
                 <div class="flex-1">
@@ -95,15 +114,13 @@
             </section>
         </div>
 
-        <!-- Graficky prvek -->
         <div class="text-center my-16">
              <svg class="w-full max-w-lg mx-auto" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
-                <path fill="none" stroke="#003749" stroke-width="2" d="M 10 30 Q 50 10, 90 30 T 190 30" />
+                 <path fill="none" stroke="#003749" stroke-width="2" d="M 10 30 Q 50 10, 90 30 T 190 30" />
             </svg>
         </div>
     </main>
 
-    <!-- Zaverecne shrnuti -->
     <footer class="bg-midnight-green text-alabaster py-12 px-6 text-center">
         <div class="container mx-auto max-w-4xl">
             <h2 class="text-3xl font-bold mb-4">Naše společná partitura</h2>
@@ -118,5 +135,17 @@
         </div>
     </footer>
 
+    <script>
+        const pisen = document.getElementById('mojePisen');
+        const ikonaPrehravace = document.getElementById('prehravac');
+        
+        ikonaPrehravace.addEventListener('click', function() {
+            if (pisen.paused) {
+                pisen.play();
+            } else {
+                pisen.pause();
+            }
+        });
+    </script>
 </body>
 </html>
