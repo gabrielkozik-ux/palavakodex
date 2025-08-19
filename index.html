@@ -25,11 +25,20 @@
         .hero-section {
             background-image: url('country.jpg');
         }
+
+        /* --- STYL PRO KLIKACÍ EMOJI --- */
+        #prehravac-emoji {
+            cursor: pointer; /* Změní kurzor na ručičku, aby bylo jasné, že je to klikací */
+            transition: transform 0.2s ease-in-out; /* Přidá plynulou animaci */
+            display: inline-block; /* Zajistí správné fungování animace */
+        }
+        #prehravac-emoji:active {
+            transform: scale(0.9); /* Při kliknutí se emoji zmenší */
+        }
     </style>
 </head>
 <body class="bg-alabaster text-midnight-green">
 
-    <!-- Uvodni sekce s obrazkem na pozadi -->
     <section class="hero-section relative bg-cover bg-center text-white shadow-lg">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
         <div class="relative z-10 container mx-auto max-w-4xl py-20 px-6 text-center flex flex-col items-center">
@@ -42,17 +51,14 @@
 
     <main class="container mx-auto max-w-4xl py-12 px-6">
         
-        <!-- Graficky prvek -->
         <div class="text-center mt-8 mb-12">
             <img src="kopec.png" alt="Grafický prvek Pálava" class="w-full max-w-lg mx-auto">
         </div>
 
-        <!-- Sekce s nastroji -->
         <div class="space-y-16">
 
-            <!-- Nastroj 1: Vzajemne ladeni -->
             <section id="pillar1" class="md:flex items-center gap-10">
-                <div class="text-6xl md:text-8xl text-center md:text-left mb-6 md:mb-0">🎼</div>
+                <div id="prehravac-emoji" class="text-6xl md:text-8xl text-center md:text-left mb-6 md:mb-0">🎼</div>
                 <div class="flex-1">
                     <h2 class="text-2xl md:text-3xl font-bold text-burnt-orange mb-3">Nástroj první: Vzájemné ladění – Důvěra a respekt</h2>
                     <p class="text-base md:text-lg text-justify">
@@ -61,7 +67,6 @@
                 </div>
             </section>
 
-            <!-- Nastroj 2: Umeni naslouchat -->
             <section id="pillar2" class="md:flex items-center gap-10 flex-row-reverse">
                  <div class="text-6xl md:text-8xl text-center md:text-left mb-6 md:mb-0">🎻</div>
                 <div class="flex-1">
@@ -72,7 +77,6 @@
                 </div>
             </section>
 
-            <!-- Nastroj 3: Profesionalni vykon -->
             <section id="pillar3" class="md:flex items-center gap-10">
                  <div class="text-6xl md:text-8xl text-center md:text-left mb-6 md:mb-0">🏆</div>
                 <div class="flex-1">
@@ -83,7 +87,6 @@
                 </div>
             </section>
 
-            <!-- Reseni neshod -->
             <section id="pillar4" class="md:flex items-center gap-10 flex-row-reverse">
                  <div class="text-6xl md:text-8xl text-center md:text-left mb-6 md:mb-0">🤵</div>
                 <div class="flex-1">
@@ -95,15 +98,13 @@
             </section>
         </div>
 
-        <!-- Graficky prvek -->
         <div class="text-center my-16">
              <svg class="w-full max-w-lg mx-auto" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
-                <path fill="none" stroke="#003749" stroke-width="2" d="M 10 30 Q 50 10, 90 30 T 190 30" />
+                 <path fill="none" stroke="#003749" stroke-width="2" d="M 10 30 Q 50 10, 90 30 T 190 30" />
             </svg>
         </div>
     </main>
 
-    <!-- Zaverecne shrnuti -->
     <footer class="bg-midnight-green text-alabaster py-12 px-6 text-center">
         <div class="container mx-auto max-w-4xl">
             <h2 class="text-3xl font-bold mb-4">Naše společná partitura</h2>
@@ -118,5 +119,19 @@
         </div>
     </footer>
 
+    <audio id="mojePisen" src="Klub Pod Pálavou.mp3" preload="auto"></audio>
+
+    <script>
+        const pisen = document.getElementById('mojePisen');
+        const emojiPrehravac = document.getElementById('prehravac-emoji');
+        
+        emojiPrehravac.addEventListener('click', function() {
+            if (pisen.paused) {
+                pisen.play();
+            } else {
+                pisen.pause();
+            }
+        });
+    </script>
 </body>
 </html>
